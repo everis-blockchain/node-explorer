@@ -1,18 +1,26 @@
 version: '3.7'
 services:
   node-explorer:
-    image: kirito37/node-explorer:v0.1.0
+    image: eum602/node-explorer:v0.1.1
+    build:
+      dockerfile: Dockerfile
+      context: .
     ports:
       - "3000:80"
+    environment:
+      - SERVER_URL=${SERVER_URL}
     restart: always
     depends_on:
       - node-server
 
   node-server:
-    image: kirito37/node-server:v0.1.0
+    image: eum602/node-server:v0.1.1
+    build:
+      dockerfile: Dockerfile
+      context: ./server
     ports:
       - "8580:8580"
     restart: always
     volumes:
       - ${CORDAPPS_PATH}:/cordapps
-    network_mode: "host"
+    #network_mode: "host"

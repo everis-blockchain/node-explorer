@@ -3,7 +3,7 @@ import axiosRetry from "axios-retry";
 import {toastr} from 'react-redux-toastr'
 import {NotificationService} from 'r3-tooling-design-system';
 import SnackbarComponent from '../components/SnackbarComponent';
-export const SERVER_BASE_URL = "http://localhost:8580";
+export const SERVER_BASE_URL = process.env.REACT_APP_SERVER_URL; //"http://localhost:8580";
 export const LOAD_APP_STATE = "LOAD_APP_STATE";
 export const SERVER_AWAKE = 'SERVER_AWAKE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -44,6 +44,7 @@ export const server_awake = () => {
             })
             // TODO: throw custom internal error
             .catch(error => {
+                console.log("SERVER URL", SERVER_BASE_URL)
                 errorHandler(error);
             });
     }
