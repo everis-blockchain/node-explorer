@@ -102,16 +102,27 @@ example
 export CORDAPPS_PATH=/home/karthik/github/samples-java/Basic/yo-cordapp/build/nodes/PartyA/cordapps
 ```
 
-
-#####2. Run docker-compose file
-
+```shell
+export SERVER_URL=http://<host>:8580 #update this according to your configuration
 ```
+
+
+#####2. Build docker-compose file
+
+```shell
+#docker-compose up -d
+docker-compose build --build-arg SERVER_URL=$SERVER_URL
+```
+
+####2.1 Run docker-compose file
+
+```shell
 docker-compose up -d
 ```
 
 #####3. Browse to Node explorer UI
 
-explorer runs at port 3000
+explorer runs at port 3000 # or according to the defined port in the docker-compose file
 
 ```
 http://localhost:3000/
@@ -120,7 +131,7 @@ http://localhost:3000/
 
 #####4. Set cordapps directory in settings
 
-Provide cordapps path as /cordapps in settings tab.
+Provide cordapps path as **/cordapps** in settings tab.
 
 ```
 /cordapps

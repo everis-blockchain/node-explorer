@@ -30,11 +30,4 @@ COPY --from=build-stage /app/build/ /usr/share/nginx/html
 
 EXPOSE 80
 
-#RUN apk add --no-cache bash
-
-#COPY .env /usr/share/nginx/html
-
-# Start Nginx server
-#CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
-
 CMD ["nginx", "-g", "daemon off;"]
